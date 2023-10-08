@@ -5,6 +5,8 @@ public class FileModel {
     private String fileName;
     private String contenType;
     private String fileSize;
+    private String fileData;
+    private int userId;
 
     public FileModel() {
     }
@@ -49,4 +51,19 @@ public class FileModel {
         this.fileSize = fileSize;
     }
 
+    public String getFileData() {
+        return fileData;
+    }
+
+    public void setFileData(String fileData) {
+        this.fileData = fileData;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }

@@ -5,6 +5,8 @@ import java.util.List;
 public abstract class T_Service<T> {
     public abstract List<T> getAll();
 
+    public abstract List<T> getAllByUserId(int id);
+
     public abstract T get(int id);
 
     public abstract void add(T t);
@@ -13,5 +15,4 @@ public abstract class T_Service<T> {
 
     public abstract void deleteByID(int id);
 
-    public abstract void delete(T t);
 }

@@ -43,7 +43,8 @@ public class NoteRepository extends T_Repository<NoteModel> {
 
     @Override
     public void deleteByID(int id) {
-        listModel.remove(id);
+       NoteModel note = listModel.stream().filter(i->i.getNoteId()==id).findFirst().orElse(null);
+        listModel.remove(note);
 
     }
 

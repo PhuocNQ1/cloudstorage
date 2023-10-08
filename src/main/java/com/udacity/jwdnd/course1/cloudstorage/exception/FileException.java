@@ -4,6 +4,6 @@ public class FileException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     public FileException(String message) {
-        super(message.concat(", Please try again!"));
+        super(message);
     }
 }

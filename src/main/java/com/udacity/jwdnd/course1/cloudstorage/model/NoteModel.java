@@ -5,6 +5,7 @@ public class NoteModel {
     private int noteId;
     private String notetitle;
     private String notedescription;
+    private int userId;
 
     public NoteModel() {
     }
@@ -39,4 +40,11 @@ public class NoteModel {
         this.notedescription = notedescription;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }
