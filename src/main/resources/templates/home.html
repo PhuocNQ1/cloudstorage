@@ -42,14 +42,12 @@
                                 <button class="btn btn-dark" id="uploadButton" type="submit">Upload</button>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-8" style="font-weight: bold;color: red;margin-left:220px;">
-                                <p th:text="${fileErr}"></p>
-                            </div>
-                        </div>
                     </div>
                 </form>
                 <div class="table-responsive">
+                    <div th:class="${fileNotification.startsWith('Success') ? 'alert alert-success' : 'alert alert-danger'}" th:if="${fileNotification != null}">
+                        <span th:text="${fileNotification}"></span>
+                    </div>
                     <table class="table table-striped" id="fileTable">
                         <thead>
                         <tr>
@@ -77,8 +75,8 @@
                     + Add a New Note
                 </button>
                 <div class="table-responsive">
-                    <div class="alert alert-danger" th:if="${noteErr != null}">
-                        <span th:text="${noteErr}"></span>
+                    <div th:class="${noteNotification.startsWith('Success') ? 'alert alert-success' : 'alert alert-danger'}" th:if="${noteNotification != null}">
+                        <span th:text="${noteNotification}"></span>
                     </div>
                     <table class="table table-striped" id="userTable">
                         <thead>
@@ -148,8 +146,8 @@
                     + Add a New Credential
                 </button>
                 <div class="table-responsive">
-                    <div class="alert alert-danger" th:if="${creErr != null}">
-                        <span th:text="${creErr}"></span>
+                    <div th:class="${creNotification.startsWith('Success') ? 'alert alert-success' : 'alert alert-danger'}" th:if="${creNotification != null}">
+                        <span th:text="${creNotification}"></span>
                     </div>
                     <table class="table table-striped" id="credentialTable">
                         <thead>

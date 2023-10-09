@@ -24,7 +24,7 @@ public class FileService extends T_Service<FileModel> {
     @Autowired
     private UserService userService;
 
-    private String msgError;
+    private String fileNotification;
 
     /**
      * Checks if a given name already exists within a list of FileModel objects.
@@ -101,7 +101,6 @@ public class FileService extends T_Service<FileModel> {
         }
         t.setUserId(userService.getCurrentUserId());
         fileMapper.add(t);
-
     }
 
     /**
@@ -132,12 +131,12 @@ public class FileService extends T_Service<FileModel> {
         return fileMapper.getAllByUserId(id);
     }
 
-    public String getMsgError() {
-        return msgError;
+    public String getFileNotification() {
+        return fileNotification;
     }
 
-    public void setMsgError(String msgError) {
-        this.msgError = msgError;
+    public void setFileNotification(String fileNotification) {
+        this.fileNotification = fileNotification;
     }
 
     public FileMapper getFileMapper() {

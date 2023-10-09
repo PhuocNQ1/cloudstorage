@@ -46,9 +46,9 @@ public class HomeController {
         model.addAttribute("credentialList", credentialService.getAllByUserId(userId));
 
         // Load and set file-error, note-error, and credential-error to the model.
-        model.addAttribute("fileErr", fileService.getMsgError());
-        model.addAttribute("noteErr", noteService.getMsgError());
-        model.addAttribute("creErr", credentialService.getMsgError());
+        model.addAttribute("fileNotification", fileService.getFileNotification());
+        model.addAttribute("noteNotification", noteService.getMsgNotification());
+        model.addAttribute("creNotification", credentialService.getMsgNotification());
         
         // Instance model for form 
         model.addAttribute("noteModel", new NoteModel());

@@ -39,11 +39,11 @@ public class FileController {
             String filePath = fileService.getResourceDirectory() + fileModel.getFileName();
             file.transferTo(new File(filePath));
             fileService.add(fileModel);
-            fileService.setMsgError(null);
+            fileService.setFileNotification("Success: The file has been successfully upload and added to the list.");
         } catch (FileException e) {
-            fileService.setMsgError(e.getMessage());
+            fileService.setFileNotification(e.getMessage());
         } catch (Exception e) {
-            fileService.setMsgError("Error: An unexpected error has occurred during the insertion process.");
+            fileService.setFileNotification("Error: An unexpected error has occurred during the insertion process.");
         }
 
         return "redirect:/home";
@@ -85,6 +85,7 @@ public class FileController {
         if (file.exists()) {
             file.delete();
             fileService.deleteByID(Integer.valueOf(id));
+            fileService.setFileNotification("Success: The file has been successfully delete.");
         }
         return "redirect:/home";
     }

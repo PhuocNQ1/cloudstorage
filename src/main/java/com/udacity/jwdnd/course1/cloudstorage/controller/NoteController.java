@@ -33,15 +33,15 @@ public class NoteController {
             NoteModel noteModel = noteService.get(note.getNoteId());
             if (noteModel != null) {
                 noteService.update(note);
-                noteService.setMsgError(null);
+                noteService.setMsgNotification("Success: The note has been successfully updated.");
             } else {
                 noteService.add(note);
-                noteService.setMsgError(null);
+                noteService.setMsgNotification("Success: The note has been successfully created and added to the list.");
             }
         } catch (NoteException e) {
-            noteService.setMsgError(e.getMessage());
+            noteService.setMsgNotification(e.getMessage());
         } catch (Exception e) {
-            noteService.setMsgError("Error: An unexpected error has occurred during the insertion process.");
+            noteService.setMsgNotification("Error: An unexpected error has occurred during the insertion process.");
         }
 
         return "redirect:/home";
@@ -56,6 +56,7 @@ public class NoteController {
     @GetMapping("/delete/{id}")
     public String deleteNote(@PathVariable String id) {
         noteService.deleteByID(Integer.parseInt(id));
+        noteService.setMsgNotification("Success: The note has been successfully delete");
         return "redirect:/home";
     }
 

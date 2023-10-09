@@ -19,7 +19,7 @@ public class NoteService extends T_Service<NoteModel> {
     @Autowired
     private UserService userService;
 
-    private String msgError;
+    private String msgNotification;
 
     /**
      * Retrieves a list of all note records from the database.
@@ -92,11 +92,11 @@ public class NoteService extends T_Service<NoteModel> {
         return list.stream().anyMatch(i -> i.getNotetitle().equals(noteModel.getNotetitle()));
     }
 
-    public String getMsgError() {
-        return msgError;
+    public String getMsgNotification() {
+        return msgNotification;
     }
 
-    public void setMsgError(String msgError) {
-        this.msgError = msgError;
+    public void setMsgNotification(String msgNotification) {
+        this.msgNotification = msgNotification;
     }
 }

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CredentialService extends T_Service<CredentialModel> {
@@ -24,7 +23,7 @@ public class CredentialService extends T_Service<CredentialModel> {
     @Autowired
     private UserService userService;
 
-    private String msgError;
+    private String msgNotification;
 
     /**
      * Retrieves a list of all credential records from the database.
@@ -110,11 +109,11 @@ public class CredentialService extends T_Service<CredentialModel> {
         return credentialModel.stream().anyMatch(cre -> cre.getUrl().equals(url));
     }
 
-    public String getMsgError() {
-        return msgError;
+    public String getMsgNotification() {
+        return msgNotification;
     }
 
-    public void setMsgError(String msgError) {
-        this.msgError = msgError;
+    public void setMsgNotification(String msgNotification) {
+        this.msgNotification = msgNotification;
     }
 }

@@ -38,15 +38,15 @@ public class CredentialController {
             CredentialModel credentialModel1 = credentialService.get(credentialModel.getCredentialId());
             if (credentialModel1 != null) {
                 credentialService.update(credentialModel);
-                credentialService.setMsgError(null);
+                credentialService.setMsgNotification("Success: The credential has been successfully updated.");
             }else {
                 credentialService.add(credentialModel);
-                credentialService.setMsgError(null);
+                credentialService.setMsgNotification("Success: The credential has been successfully created and added to the list.");
             }
         } catch (CredentialException e) {
-            credentialService.setMsgError(e.getMessage());
+            credentialService.setMsgNotification(e.getMessage());
         } catch (Exception e) {
-            credentialService.setMsgError("Error: An unexpected error has occurred during the insertion process.");
+            credentialService.setMsgNotification("Error: An unexpected error has occurred during the insertion process.");
         }
         return "redirect:/home";
     }
@@ -59,6 +59,7 @@ public class CredentialController {
     @GetMapping("/delete/{id}")
     public String deleteCredential(@PathVariable String id) {
         credentialService.deleteByID(Integer.parseInt(id));
+        credentialService.setMsgNotification("Success: The credential has been successfully delete.");
         return "redirect:/home";
     }
 
