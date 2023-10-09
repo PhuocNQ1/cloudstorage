@@ -42,7 +42,7 @@ public class SignUpController {
         String status = null;
         try {
             service.add(user);
-            service.setMsgErr("OK");
+            service.setMsgErr("success");
         } catch (SignUpException e) {
             status = e.getMessage();
             return signupPage(model);

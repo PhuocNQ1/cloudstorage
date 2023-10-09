@@ -2,6 +2,7 @@ package com.udacity.jwdnd.course1.cloudstorage.services.authen_service;
 
 import java.util.ArrayList;
 
+import com.udacity.jwdnd.course1.cloudstorage.services.signup_service.SignUpService;
 import com.udacity.jwdnd.course1.cloudstorage.services.user_service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -22,6 +23,9 @@ public class AuthenticationService implements AuthenticationProvider {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private SignUpService signUpService;
     
     @Autowired
     private UserMapper mapper;
@@ -30,6 +34,8 @@ public class AuthenticationService implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
+
+        signUpService.setMsgErr(null);
 
         UserModel user = mapper.getByUserName(username);
         if (user != null) {
