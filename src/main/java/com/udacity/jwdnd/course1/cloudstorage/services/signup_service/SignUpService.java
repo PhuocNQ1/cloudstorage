@@ -28,18 +28,40 @@ public class SignUpService {
         this.msgErr = msgErr;
     }
 
+    /**
+     * Retrieves a list of all user records.
+     *
+     * @return
+     */
     public List<UserModel> getAll() {
         return mapper.getAll();
     }
 
+    /**
+     * Retrieves a user record based on the provided ID.
+     *
+     * @param id
+     * @return
+     */
     public UserModel get(int id) {
         return mapper.get(id);
     }
 
+    /**
+     * Retrieves a user record based on the provided username.
+     *
+     * @param userName
+     * @return
+     */
     public UserModel getByUserName(String userName) {
         return mapper.getByUserName(userName);
     }
 
+    /**
+     * Adds a new user record to the database after checking for username uniqueness.
+     *
+     * @param t
+     */
     public void add(UserModel t) {
         UserModel userModel = this.getByUserName(t.getUserName());
         if (userModel != null) {
@@ -50,12 +72,24 @@ public class SignUpService {
         mapper.add(t);
     }
 
+
+    /**
+     * Updates an existing user record in the database.
+     *
+     * @param t
+     */
     public void update(UserModel t) {
         mapper.update(t);
     }
 
+    /**
+     * Deletes a user record from the database based on the provided ID.
+     *
+     * @param id
+     */
     public void deleteByID(int id) {
         mapper.deleteByID(id);
     }
+
 
 }

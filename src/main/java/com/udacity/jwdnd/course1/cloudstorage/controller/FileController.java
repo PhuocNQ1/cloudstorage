@@ -50,7 +50,7 @@ public class FileController {
     }
 
     /**
-     * Download file by @param fileName
+     * Download file by fileName
      *
      * @param fileName
      * @return
@@ -70,7 +70,7 @@ public class FileController {
     }
 
     /**
-     * Delete file by @param id
+     * Delete file by id
      *
      * @param id
      * @return

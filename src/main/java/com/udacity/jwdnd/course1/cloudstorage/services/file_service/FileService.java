@@ -27,7 +27,7 @@ public class FileService extends T_Service<FileModel> {
     private String msgError;
 
     /**
-     * Check duplicate name
+     * Checks if a given name already exists within a list of FileModel objects.
      *
      * @param list
      * @param name
@@ -38,7 +38,7 @@ public class FileService extends T_Service<FileModel> {
     }
 
     /**
-     * Check valid file format
+     * Checks if a given file name has a valid file format.
      *
      * @param name
      * @return
@@ -51,6 +51,11 @@ public class FileService extends T_Service<FileModel> {
         return matcher.matches();
     }
 
+    /**
+     * Maps the data from a MultipartFile object to a FileModel object.
+     * @param file
+     * @param fileModel
+     */
     public void mapMultipartFile(MultipartFile file, FileModel fileModel) {
         if(file == null){
             throw new FileException("Error: File is null, Please try again!");
@@ -60,16 +65,30 @@ public class FileService extends T_Service<FileModel> {
         fileModel.setFileSize(Long.toString(file.getSize()));
     }
 
+    /**
+     * Retrieves a list of all file records from the database.
+     * @return
+     */
     @Override
     public List<FileModel> getAll() {
         return fileMapper.getAll();
     }
 
+    /**
+     * Retrieves a file record from the database based on the provided ID.
+     * @param id
+     * @return
+     */
     @Override
     public FileModel get(int id) {
         return fileMapper.get(id);
     }
 
+    /**
+     * Adds a new file record to the database with the provided FileModel.
+     * @param t
+     * @throws FileException
+     */
     @Override
     public void add(FileModel t) throws FileException {
         String fileName = t.getFileName();
@@ -85,16 +104,29 @@ public class FileService extends T_Service<FileModel> {
 
     }
 
+    /**
+     * Updates a file record in the database with the provided FileModel.
+     * @param t
+     */
     @Override
     public void update(FileModel t) {
         fileMapper.update(t);
     }
 
+    /**
+     * Deletes a record from the database based on the provided ID.
+     * @param id
+     */
     @Override
     public void deleteByID(int id) {
         fileMapper.deleteByID(id);
     }
 
+    /**
+     * Retrieves a list of file records associated with a specific user ID from the database.
+     * @param id
+     * @return
+     */
     @Override
     public List<FileModel> getAllByUserId(int id) {
         return fileMapper.getAllByUserId(id);
@@ -112,6 +144,10 @@ public class FileService extends T_Service<FileModel> {
         return fileMapper;
     }
 
+    /**
+     * Retrieves the resource directory path where files are stored.
+     * @return
+     */
     public String getResourceDirectory() {
         String currentDirectory = System.getProperty("user.dir");
         return String.valueOf(Paths.get(currentDirectory, "src", "main", "resources", "image")).concat(File.separator);

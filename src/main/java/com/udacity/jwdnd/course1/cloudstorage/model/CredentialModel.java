@@ -7,7 +7,6 @@ public class CredentialModel {
     private String username;
     private String key;
     private String password;
-    private String unencryptedPassword;
     private int userId;
 
     public CredentialModel() {
@@ -59,14 +58,6 @@ public class CredentialModel {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getUnencryptedPassword() {
-        return unencryptedPassword;
-    }
-
-    public void setUnencryptedPassword(String unencryptedPassword) {
-        this.unencryptedPassword = unencryptedPassword;
     }
 
     public int getUserId() {

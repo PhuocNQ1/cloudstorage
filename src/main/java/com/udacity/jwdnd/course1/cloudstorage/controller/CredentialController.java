@@ -15,9 +15,23 @@ public class CredentialController {
 
     @Autowired
     private CredentialService credentialService;
+    
+    /**
+     * Get CredentialModel by id
+     * @param id
+     * @return
+     */
+    @GetMapping("/get/{id}")
+    public ResponseEntity<CredentialModel> getCredential(@PathVariable String id) {
+        CredentialModel credentialModel = credentialService.get(Integer.parseInt(id));
+        return new ResponseEntity<>(credentialModel, HttpStatus.OK);
+    }
 
-    private String msgError;
-
+    /**
+     * Create a credential
+     * @param credentialModel
+     * @return
+     */
     @PostMapping("/add")
     public String addCredential(@ModelAttribute CredentialModel credentialModel) {
         try {
@@ -37,15 +51,15 @@ public class CredentialController {
         return "redirect:/home";
     }
 
+    /**
+     * Delete credential with id
+     * @param id
+     * @return
+     */
     @GetMapping("/delete/{id}")
     public String deleteCredential(@PathVariable String id) {
         credentialService.deleteByID(Integer.parseInt(id));
         return "redirect:/home";
     }
 
-    @GetMapping("/get/{id}")
-    public ResponseEntity<CredentialModel> getCredential(@PathVariable String id) {
-        CredentialModel credentialModel = credentialService.get(Integer.parseInt(id));
-        return new ResponseEntity<>(credentialModel, HttpStatus.OK);
-    }
 }

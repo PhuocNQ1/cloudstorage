@@ -18,6 +18,13 @@ public class HashService {
 
     public final Logger logger = LoggerFactory.getLogger(HashService.class);
 
+    /**
+     * Computes the hashed value of the provided data using a salt.
+     * 
+     * @param data
+     * @param salt
+     * @return
+     */
     public String getHashedValue(String data, String salt) {
         byte[] hashedValue = null;
 
@@ -34,6 +41,11 @@ public class HashService {
         return Base64.getEncoder().encodeToString(hashedValue);
     }
 
+    /**
+     * Generate random salt
+     * 
+     * @return
+     */
     public String encodedSalt() {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];

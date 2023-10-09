@@ -1,11 +1,13 @@
 package com.udacity.jwdnd.course1.cloudstorage.model;
 
+import java.util.Collection;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-
 public class UserModel implements UserDetails {
+
+    private static final long serialVersionUID = 1L;
     private int userId;
     private String userName;
     private String salt;
@@ -68,7 +70,6 @@ public class UserModel implements UserDetails {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

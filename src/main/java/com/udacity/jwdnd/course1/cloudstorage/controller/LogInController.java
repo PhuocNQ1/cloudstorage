@@ -15,9 +15,6 @@ import org.thymeleaf.util.StringUtils;
 public class LogInController {
 
     @Autowired
-    private AuthenticationService authenticationService;
-
-    @Autowired
     private SignUpService signUpService;
 
     @GetMapping("/login")

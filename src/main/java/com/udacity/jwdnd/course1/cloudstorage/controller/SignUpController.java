@@ -18,12 +18,25 @@ public class SignUpController {
     @Autowired
     private SignUpService service;
 
+    /**
+     * Get signup page
+     * 
+     * @param model
+     * @return
+     */
     @GetMapping()
     public String signupPage(Model model) {
         model.addAttribute("account", new UserModel());
         return "signup";
     }
 
+    /**
+     * Create a account
+     * 
+     * @param user
+     * @param model
+     * @return
+     */
     @PostMapping("/add")
     public String createAccount(@ModelAttribute UserModel user, Model model) {
         String status = null;
